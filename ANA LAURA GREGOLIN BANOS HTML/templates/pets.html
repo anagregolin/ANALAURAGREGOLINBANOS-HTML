@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<div class="titulo-linha"><div><h1>Pets</h1><p class="subtitulo">Cada pet está associado a um tutor.</p></div><a class="botao" href="{{ url_for('novo_pet') }}">+ Novo pet</a></div>
+<div class="tabela-wrap"><table><thead><tr><th>Nome</th><th>Espécie</th><th>Raça</th><th>Idade</th><th>Tutor</th></tr></thead><tbody>
+{% for p in pets %}<tr><td>{{ p.nome }}</td><td>{{ p.especie }}</td><td>{{ p.raca or '-' }}</td><td>{{ p.idade if p.idade is not none else '-' }}</td><td>{{ p.tutor_nome }}</td></tr>{% else %}<tr><td colspan="5">Nenhum pet cadastrado.</td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

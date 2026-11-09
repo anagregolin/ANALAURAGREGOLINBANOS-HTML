@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<div class="titulo-linha"><div><h1>Tutores</h1><p class="subtitulo">Consulte e atualize os dados dos tutores.</p></div><a class="botao" href="{{ url_for('novo_tutor') }}">+ Novo tutor</a></div>
+<form class="busca" method="post"><input name="busca" placeholder="Buscar por nome, telefone ou e-mail" value="{{ request.form.get('busca','') }}"><button>Buscar</button><a class="botao secundario" href="{{ url_for('tutores') }}">Limpar</a></form>
+<div class="tabela-wrap"><table><thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th>Ação</th></tr></thead><tbody>
+{% for t in tutores %}<tr><td>{{ t.nome }}</td><td>{{ t.cpf }}</td><td>{{ t.telefone }}</td><td>{{ t.email or '-' }}</td><td><a class="link" href="{{ url_for('editar_tutor', id=t.id) }}">Editar</a></td></tr>{% else %}<tr><td colspan="5">Nenhum tutor encontrado.</td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

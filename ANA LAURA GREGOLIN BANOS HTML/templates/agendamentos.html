@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<div class="titulo-linha"><div><h1>Agendamentos</h1><p class="subtitulo">Listagem organizada por data e horário.</p></div><a class="botao" href="{{ url_for('novo_agendamento') }}">+ Novo agendamento</a></div>
+<div class="tabela-wrap"><table><thead><tr><th>Data e hora</th><th>Tutor</th><th>Pet</th><th>Motivo</th><th>Observações</th><th>Ação</th></tr></thead><tbody>
+{% for a in agendamentos %}<tr><td>{{ a.data_hora.replace('T',' ') }}</td><td>{{ a.tutor_nome }}</td><td>{{ a.pet_nome }}</td><td>{{ a.motivo }}</td><td>{{ a.observacoes or '-' }}</td><td><a class="link" href="{{ url_for('editar_agendamento', id=a.id) }}">Alterar data</a></td></tr>{% else %}<tr><td colspan="6">Nenhum agendamento cadastrado.</td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

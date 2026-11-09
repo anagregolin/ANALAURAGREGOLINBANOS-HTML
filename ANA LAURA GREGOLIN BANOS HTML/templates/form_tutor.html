@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}<h1>{{ 'Editar tutor' if tutor else 'Cadastrar tutor' }}</h1><form class="formulario" method="post">
+<label>Nome completo *</label><input name="nome" required value="{{ tutor.nome if tutor else '' }}">
+<label>CPF (11 números) *</label><input name="cpf" required maxlength="14" value="{{ tutor.cpf if tutor else '' }}">
+<label>Telefone *</label><input name="telefone" required value="{{ tutor.telefone if tutor else '' }}">
+<label>E-mail</label><input type="email" name="email" value="{{ tutor.email if tutor else '' }}">
+<div class="acoes"><button type="submit">Salvar</button><a class="botao secundario" href="{{ url_for('tutores') }}">Cancelar</a></div></form>{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<h1>Cadastrar pet</h1><form class="formulario" method="post">
+<label>Nome *</label><input name="nome" required><label>Espécie *</label><select name="especie" required><option value="">Selecione</option><option>Cachorro</option><option>Gato</option><option> Ave</option><option>Outro</option></select>
+<label>Raça</label><input name="raca"><label>Idade (anos)</label><input type="number" min="0" name="idade">
+<label>Tutor responsável *</label><select name="tutor_id" required><option value="">Selecione um tutor</option>{% for t in tutores %}<option value="{{ t.id }}">{{ t.nome }}</option>{% endfor %}</select>
+<div class="acoes"><button>Salvar pet</button><a class="botao secundario" href="{{ url_for('pets') }}">Cancelar</a></div></form>{% endblock %}

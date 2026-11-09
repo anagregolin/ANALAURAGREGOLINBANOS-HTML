@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}<h1>Novo agendamento</h1><form class="formulario" method="post">
+<label>Data e hora *</label><input type="datetime-local" name="data_hora" required>
+<label>Tutor *</label><select name="tutor_id" id="tutor" required><option value="">Selecione</option>{% for t in tutores %}<option value="{{ t.id }}">{{ t.nome }}</option>{% endfor %}</select>
+<label>Pet *</label><select name="pet_id" id="pet" required><option value="">Selecione o pet</option>{% for p in pets %}<option value="{{ p.id }}" data-tutor="{{ p.tutor_id }}">{{ p.nome }}</option>{% endfor %}</select>
+<label>Motivo *</label><input name="motivo" required placeholder="Consulta, vacinação..."><label>Observações</label><textarea name="observacoes" rows="3"></textarea>
+<div class="acoes"><button>Salvar agendamento</button><a class="botao secundario" href="{{ url_for('agendamentos') }}">Cancelar</a></div></form>
+<script>const tutor=document.querySelector('#tutor'), pet=document.querySelector('#pet'); tutor.addEventListener('change',()=>{[...pet.options].forEach(o=>{if(o.value)o.hidden=o.dataset.tutor!==tutor.value;});pet.value='';});</script>{% endblock %}

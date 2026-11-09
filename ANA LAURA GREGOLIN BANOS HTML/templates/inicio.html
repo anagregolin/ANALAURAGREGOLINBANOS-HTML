@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<h1>Bem-vindo(a), {{ session.get('usuario_nome') }}!</h1><p class="subtitulo">Gerencie as informações da clínica em um só lugar.</p>
+<div class="cards"><a class="card" href="{{ url_for('tutores') }}"><span>👥</span><h2>{{ totais.tutores }}</h2><p>Tutores cadastrados</p></a>
+<a class="card" href="{{ url_for('pets') }}"><span>🐶</span><h2>{{ totais.pets }}</h2><p>Pets cadastrados</p></a>
+<a class="card" href="{{ url_for('agendamentos') }}"><span>📅</span><h2>{{ totais.agendamentos }}</h2><p>Agendamentos</p></a></div>{% endblock %}
